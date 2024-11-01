@@ -2,6 +2,7 @@ import { useReducer, useEffect, useMemo } from "react";
 import { initialState, activityReducer } from "./reducers/activity-reducer";
 import Form from "./components/Form.";
 import ActivityList from "./components/ActivityList";
+import CaloriTracker from "./components/CaloriTracker";
 
 function App() {
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -18,8 +19,8 @@ function App() {
   return (
     <>
       <header className=" bg-lime-600 py-3">
-        <div className=" max-w-4xl mx-auto flex justify-between">
-          <h1 className=" text-center font-bold text-white uppercase">
+        <div className=" max-w-4xl mx-auto flex justify-between items-center">
+          <h1 className=" text-center font-bold text-white uppercase text-3xl">
             Contador de Calorias
           </h1>
           <button
@@ -35,6 +36,12 @@ function App() {
       <section className=" bg-lime-500 py-20 px-5">
         <div className=" max-w-4xl mx-auto">
           <Form dispatch={dispatch} state={state} />
+        </div>
+      </section>
+
+      <section className=" bg-gray-800">
+        <div className=" max-w-4xl mx-auto">
+          <CaloriTracker activities={state.activities} />
         </div>
       </section>
 
